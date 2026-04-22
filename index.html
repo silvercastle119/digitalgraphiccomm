@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eunseong Song Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #001958;
+      --stone: #7e8186;
+      --paper: #efeae1;
+      --paper-2: #e4e7ec;
+      --ink: #16233d;
+      --muted: rgba(22, 35, 61, 0.72);
+      --soft: rgba(22, 35, 61, 0.48);
+      --line: rgba(0, 25, 88, 0.12);
+      --gold: #b7a27a;
+      --glass: rgba(255,255,255,0.34);
+      --shadow: 0 24px 60px rgba(0, 25, 88, 0.08);
+      --shadow-soft: 0 12px 30px rgba(0, 25, 88, 0.06);
+      --max-media-height: 620px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(0,25,88,0.08), transparent 18%),
+        radial-gradient(circle at 86% 14%, rgba(183,162,122,0.08), transparent 22%),
+        linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.13;
+      background-image:
+        radial-gradient(rgba(0,25,88,0.60) 0.7px, transparent 0.7px),
+        radial-gradient(rgba(126,129,134,0.45) 0.6px, transparent 0.6px);
+      background-size: 17px 17px, 23px 23px;
+      background-position: 0 0, 8px 10px;
+      mix-blend-mode: multiply;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0)),
+        radial-gradient(circle at 50% 50%, rgba(183,162,122,0.05), transparent 40%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: min(1340px, calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .serif {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(239, 234, 225, 0.62);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0,25,88,0.08);
+    }
+
+    .site-header .inner {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, var(--navy), #596784);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(255,255,255,0.26);
+      border-radius: 12px;
+    }
+
+    .brand-mark span {
+      position: relative;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      padding-left: 0.32em;
+      z-index: 1;
+    }
+
+    .brand-copy small {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.42em;
+      color: var(--soft);
+      margin-bottom: 2px;
+    }
+
+    .brand-copy strong {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--navy);
+    }
+
+    .nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--navy);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: 0.24s ease;
+    }
+
+    .nav a:hover {
+      color: var(--navy);
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      padding: 34px 0 84px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .hero-board {
+      position: relative;
+      min-height: 770px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, #c8cfda, #bfc6d2);
+    }
+
+    .hero-board::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+        radial-gradient(circle at 16% 18%, rgba(0,25,88,0.11), transparent 18%),
+        radial-gradient(circle at 82% 12%, rgba(183,162,122,0.14), transparent 18%);
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+
+    .hero-main {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(0.92) saturate(0.7);
+      opacity: 0.74;
+      mix-blend-mode: multiply;
+    }
+
+    .hero-fragment,
+    .hero-block,
+    .hero-script,
+    .hero-tag,
+    .hero-line {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .hero-fragment {
+      overflow: hidden;
+      background: rgba(255,255,255,0.18);
+      box-shadow: 0 18px 34px rgba(0, 25, 88, 0.06);
+    }
+
+    .hero-fragment img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(0.98);
+      mix-blend-mode: multiply;
+      opacity: 0.94;
+    }
+
+    .hero-fragment.f1 {
+      top: 7%;
+      left: 7%;
+      width: 28%;
+      height: 22%;
+      transform: rotate(-6deg);
+    }
+
+    .hero-fragment.f2 {
+      top: 12%;
+      right: 8%;
+      width: 34%;
+      height: 23%;
+      transform: rotate(3deg);
+    }
+
+    .hero-fragment.f3 {
+      left: 31%;
+      bottom: 12%;
+      width: 35%;
+      height: 26%;
+      transform: rotate(-2deg);
+    }
+
+    .hero-block {
+      background: rgba(0,25,88,0.84);
+      mix-blend-mode: multiply;
+      opacity: 0.88;
+    }
+
+    .hero-block.b1 {
+      left: 11%;
+      top: 39%;
+      width: 18%;
+      height: 18%;
+      border-radius: 999px;
+    }
+
+    .hero-block.b2 {
+      left: 47%;
+      top: 24%;
+      width: 17%;
+      height: 24%;
+      border-radius: 28px;
+      transform: rotate(-8deg);
+      background: rgba(126,129,134,0.9);
+    }
+
+    .hero-block.b3 {
+      left: 8%;
+      bottom: 13%;
+      width: 18%;
+      height: 19%;
+      border-radius: 999px;
+    }
+
+    .hero-block.b4 {
+      right: 8%;
+      bottom: 12%;
+      width: 20%;
+      height: 22%;
+      border-radius: 30px;
+      background: rgba(126,129,134,0.82);
+    }
+
+    .hero-block.b5 {
+      left: 51%;
+      bottom: 7%;
+      width: 12%;
+      height: 25%;
+      border-radius: 999px;
+      transform: translateX(-50%);
+      opacity: 0.76;
+    }
+
+    .hero-script {
+      font-family: "Cormorant Garamond", serif;
+      color: rgba(247, 243, 235, 0.9);
+      mix-blend-mode: screen;
+      line-height: 0.82;
+      letter-spacing: -0.06em;
+      font-size: clamp(72px, 8vw, 128px);
+      opacity: 0.92;
+    }
+
+    .hero-script.s1 {
+      top: 6%;
+      right: 7%;
+      transform: rotate(-2deg);
+      text-align: right;
+    }
+
+    .hero-script.s2 {
+      right: 7%;
+      bottom: 8%;
+      text-align: right;
+      font-size: clamp(54px, 6vw, 92px);
+    }
+
+    .hero-tag {
+      left: 6%;
+      bottom: 3%;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      color: rgba(247,243,235,0.88);
+      background: rgba(0,25,88,0.34);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 8px 12px 8px 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-line {
+      border-top: 1px solid rgba(247,243,235,0.66);
+      mix-blend-mode: screen;
+      opacity: 0.88;
+    }
+
+    .hero-line.l1 {
+      top: 12%;
+      right: -8%;
+      width: 44%;
+      transform: rotate(-16deg);
+    }
+
+    .hero-line.l2 {
+      top: 58%;
+      right: -10%;
+      width: 38%;
+      transform: rotate(20deg);
+    }
+
+    .hero-line.l3 {
+      left: -9%;
+      bottom: 18%;
+      width: 42%;
+      transform: rotate(8deg);
+    }
+
+    .hero-copy {
+      position: relative;
+      padding-top: 18px;
+    }
+
+    .hero-copy::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -18px;
+      width: 128px;
+      height: 128px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,25,88,0.10);
+    }
+
+    .eyebrow,
+    .section-kicker {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.42em;
+      color: var(--soft);
+      margin-bottom: 18px;
+    }
+
+    .hero-copy h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(66px, 8vw, 122px);
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .hero-copy h1 span {
+      display: block;
+    }
+
+    .hero-copy h1 .offset {
+      padding-left: 10%;
+      color: rgba(0,25,88,0.56);
+    }
+
+    .hero-copy h1 .offset2 {
+      padding-left: 4%;
+      color: var(--stone);
+    }
+
+    .hero-copy p {
+      max-width: 560px;
+      margin-top: 28px;
+      font-size: 17px;
+      line-height: 1.94;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.22s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #072772;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(0,25,88,0.10);
+      background: rgba(255,255,255,0.52);
+      color: var(--navy);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.78);
+    }
+
+    .about {
+      padding: 8px 0 54px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.36fr 0.64fr;
+      gap: 26px;
+    }
+
+    .about-block {
+      position: relative;
+      min-height: 260px;
+      padding: 34px 30px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .about-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.02));
+      z-index: 0;
+    }
+
+    .about-block::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -70px;
+      bottom: -76px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,25,88,0.08);
+      z-index: 0;
+    }
+
+    .about-block > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-name {
+      margin-top: 24px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 46px;
+      line-height: 0.95;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .about-role {
+      margin-top: 10px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--soft);
+    }
+
+    .about-text p {
+      font-size: 17px;
+      line-height: 1.96;
+      color: rgba(22,35,61,0.78);
+    }
+
+    .about-text p + p {
+      margin-top: 22px;
+      color: rgba(22,35,61,0.62);
+    }
+
+    .projects {
+      padding: 8px 0 110px;
+    }
+
+    .projects-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 42px;
+    }
+
+    .projects-head h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(50px, 4vw, 76px);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .projects-head p {
+      max-width: 520px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(22,35,61,0.56);
+    }
+
+    .project-list {
+      display: grid;
+      gap: 30px;
+    }
+
+    .project {
+      position: relative;
+      padding: 24px;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(0,25,88,0.10);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      top: -44px;
+      right: -62px;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,25,88,0.06);
+      opacity: 0.75;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .project.reverse .project-media-wrap {
+      order: 2;
+    }
+
+    .project.reverse .project-copy {
+      order: 1;
+    }
+
+    .project-media-wrap {
+      position: relative;
+      padding: 12px;
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(0,25,88,0.10);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .media {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(0,25,88,0.13), transparent 18%),
+        radial-gradient(circle at 84% 14%, rgba(183,162,122,0.14), transparent 18%),
+        linear-gradient(180deg, #d6dbe3, #eceff4);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18);
+    }
+
+    .media.poster {
+      aspect-ratio: 21.59 / 27.94;
+      max-width: 520px;
+      width: 74%;
+      min-width: 280px;
+      margin: 0 auto;
+      max-height: var(--max-media-height);
+    }
+
+    .media.square {
+      aspect-ratio: 1436 / 1440;
+      max-width: 560px;
+      width: 78%;
+      min-width: 300px;
+      margin: 0 auto;
+      max-height: var(--max-media-height);
+    }
+
+    .media.landscape {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      max-height: 500px;
+    }
+
+    .media.sweethearts {
+      aspect-ratio: 1764 / 1176;
+      width: 100%;
+      max-height: 500px;
+    }
+
+    .media.pagewide {
+      aspect-ratio: 60.96 / 32.74;
+      width: 100%;
+      max-height: 480px;
+    }
+
+    .media.gif {
+      aspect-ratio: 2377 / 1728;
+      width: 100%;
+      max-height: 500px;
+    }
+
+    .media img,
+    .media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: rgba(228,231,236,0.75);
+      position: relative;
+      z-index: 1;
+    }
+
+    .media video {
+      object-fit: cover;
+    }
+
+    .media.poster img,
+    .media.square video,
+    .media.landscape video,
+    .media.sweethearts video,
+    .media.pagewide img,
+    .media.gif img {
+      object-fit: contain;
+    }
+
+    .media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02)),
+        radial-gradient(circle at 50% 50%, rgba(0,25,88,0.06), transparent 42%);
+      z-index: 0;
+    }
+
+    .overlay-title,
+    .overlay-note,
+    .overlay-cut,
+    .overlay-fragment {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .overlay-title {
+      left: -12px;
+      bottom: 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 98px);
+      line-height: 0.84;
+      letter-spacing: -0.06em;
+      color: rgba(0,25,88,0.16);
+      mix-blend-mode: multiply;
+    }
+
+    .overlay-note {
+      right: 16px;
+      top: 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.30em;
+      color: rgba(247,243,235,0.92);
+      background: rgba(0,25,88,0.40);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 8px 10px 8px 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    .overlay-cut {
+      background: var(--navy);
+      mix-blend-mode: multiply;
+      opacity: 0.78;
+    }
+
+    .overlay-cut.c1 {
+      width: 18%;
+      height: 18%;
+      left: 6%;
+      bottom: 10%;
+      border-radius: 999px;
+    }
+
+    .overlay-cut.c2 {
+      width: 16%;
+      height: 24%;
+      right: 8%;
+      bottom: 8%;
+      border-radius: 24px;
+      background: var(--stone);
+    }
+
+    .overlay-fragment {
+      width: 32%;
+      height: 28%;
+      top: 8%;
+      right: 6%;
+      overflow: hidden;
+      transform: rotate(4deg);
+      box-shadow: 0 14px 24px rgba(0,25,88,0.06);
+      background: rgba(255,255,255,0.20);
+    }
+
+    .overlay-fragment img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(0.96);
+      mix-blend-mode: multiply;
+      opacity: 0.92;
+    }
+
+    .placeholder {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(239,234,225,0.22), rgba(239,234,225,0.72));
+      backdrop-filter: blur(2px);
+    }
+
+    .placeholder-mark {
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      background: linear-gradient(145deg, var(--navy), #5b6883);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .placeholder small {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.32em;
+      color: rgba(22,35,61,0.56);
+      margin-bottom: 10px;
+    }
+
+    .placeholder p {
+      max-width: 290px;
+      font-size: 14px;
+      line-height: 1.72;
+      color: rgba(22,35,61,0.72);
+    }
+
+    .project-copy {
+      position: relative;
+      padding-top: 4px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .project-num {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(0,25,88,0.10);
+      box-shadow: 0 8px 20px rgba(0,25,88,0.05);
+      color: var(--navy);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+    }
+
+    .project-date,
+    .project-assignment {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      color: var(--soft);
+    }
+
+    .project-title {
+      margin-top: 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(40px, 3.2vw, 64px);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      font-weight: 600;
+      color: var(--navy);
+      max-width: 680px;
+    }
+
+    .project-text-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .text-block {
+      min-height: 190px;
+      padding: 22px 20px;
+      background: rgba(255,255,255,0.46);
+      border: 1px solid rgba(0,25,88,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .text-block::before {
+      content: "";
+      position: absolute;
+      right: -50px;
+      bottom: -60px;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,25,88,0.05);
+      z-index: 0;
+    }
+
+    .text-block > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .text-block h4 {
+      margin-bottom: 12px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      color: var(--soft);
+      font-weight: 600;
+    }
+
+    .text-block p {
+      font-size: 14px;
+      line-height: 1.92;
+      color: rgba(22,35,61,0.78);
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .about-grid,
+      .project-grid,
+      .project.reverse .project-media-wrap,
+      .project.reverse .project-copy {
+        grid-template-columns: 1fr;
+      }
+
+      .project.reverse .project-media-wrap,
+      .project.reverse .project-copy {
+        order: initial;
+      }
+
+      .hero-board {
+        min-height: 580px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(1340px, calc(100% - 28px));
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 22px 0 64px;
+      }
+
+      .hero-board {
+        min-height: 420px;
+      }
+
+      .hero-copy h1 .offset,
+      .hero-copy h1 .offset2 {
+        padding-left: 0;
+      }
+
+      .projects-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .project-text-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .media.poster,
+      .media.square {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container inner">
+      <a href="#top" class="brand">
+        <div class="brand-mark">
+          <img src="images/logo.svg" alt="logo">
+        </div>
+        <div class="brand-copy">
+          <small>Designer Portfolio</small>
+          <strong>EUNSEONG SONG</strong>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-board">
+          <img class="hero-main" src="images/hero.jpg" alt="Hero image">
+
+          <div class="hero-block b1"></div>
+          <div class="hero-block b2"></div>
+          <div class="hero-block b3"></div>
+          <div class="hero-block b4"></div>
+          <div class="hero-block b5"></div>
+
+          <div class="hero-line l1"></div>
+          <div class="hero-line l2"></div>
+          <div class="hero-line l3"></div>
+
+          <div class="hero-script s1">Seen,<br>felt</div>
+          <div class="hero-script s2">Visual<br>memory</div>
+        </div>
+
+        <div class="hero-copy">
+          <span class="eyebrow">Visual Identity / Motion / Typography</span>
+          <h1>
+            <span>Design that moves</span>
+            <span class="offset">between perception,</span>
+            <span class="offset2">emotion, and function.</span>
+          </h1>
+          <p>
+            I explore how visuals shape meaning through motion, typography,
+            branding, and user-centered communication. My work focuses on the
+            tension between what is seen and what is felt.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#about">Read About</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-block">
+          <span class="section-kicker">About</span>
+          <div class="about-name">Eunseong Song</div>
+          <div class="about-role">Designer / Visual Storyteller</div>
+        </div>
+        <div class="about-block about-text">
+          <p>
+            I am a designer who explores how visuals shape perception, emotion,
+            and meaning. My work focuses on the space between what is seen and
+            what is understood, using typography, motion, and composition to
+            create layered experiences. Rather than simply presenting
+            information, I aim to translate ideas into visuals that communicate
+            on both an immediate and intuitive level.
+          </p>
+          <p>
+            Across my projects, I experiment with contrast: clarity and
+            distortion, structure and chaos, emotion and function. Through this
+            process, I explore how design can move beyond aesthetics and become
+            a tool for storytelling, branding, and user experience.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="projects-head">
+          <div>
+            <span class="section-kicker">Selected Work</span>
+            <h2>Eight projects from this course</h2>
+          </div>
+          <p>
+            Each section includes the project title, date, assignment name,
+            media, description, and intention.
+          </p>
+        </div>
+
+        <div class="project-list">
+          <article class="project">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media poster">
+                  <img src="images/a1-poster.jpg" alt="Assignment 1 poster">
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">01</div><div class="project-date">Assignment 1</div></div>
+                <div class="project-assignment">DON'T BE BORING / WATCH THAT KERNING</div>
+                <h3 class="project-title">DON'T BE BORING</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A typography poster built around the phrases “Don't be boring” and “Watch that kerning.” The composition uses a bowling visual pun to connect boring and bowling, while manipulated spacing turns typography into part of the message.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted to show that typography is not just about readability, but about perception. Even a small detail like kerning can completely change how a design feels and communicates.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reverse">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media square">
+                  <video src="videos/a2-lockup.mp4" controls width="1436" height="1440"></video>
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">02</div><div class="project-date">Assignment 2</div></div>
+                <div class="project-assignment">REDESIGN LOGOS OR MASHUPS</div>
+                <h3 class="project-title">Different Ring, Same Obsession</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A logo mashup combining the Mercedes-Benz ring with the Jordan Jumpman silhouette, developed into an animated lockup. The slogan “Different ring, same obsession” connects luxury engineering and athletic excellence through a shared mindset.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted to explore how two very different brands could be unified by one value: obsession with performance. The ring becomes both a logo form and a championship symbol.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media landscape">
+                  <video src="videos/a3-ad.mp4" controls width="1920" height="1080"></video>
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">03</div><div class="project-date">Assignment 3</div></div>
+                <div class="project-assignment">CUSTOM AD</div>
+                <h3 class="project-title">The Path to Obsession</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A custom advertisement built from Michael Jordan game footage. The basketball hoop is composited into the Mercedes × Jordan merged logo, while narration focuses on the difficult path toward success.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>This project translates brand identity into a story about discipline, struggle, and precision. I wanted the logo to function as a symbolic goal rather than just a graphic mark.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reverse">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media sweethearts">
+                  <video src="videos/a4-sweethearts.mp4" controls width="1764" height="1176"></video>
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">04</div><div class="project-date">Assignment 4</div></div>
+                <div class="project-assignment">SWEETHEARTS AD</div>
+                <h3 class="project-title">Let Your Heart Be Visible</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A Sweethearts animation where, instead of hearts appearing in someone's eyes, Sweethearts candies burst out. The logo and slogan turn a familiar romantic visual into a playful branded moment.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted to turn emotion into product language and show how branding can feel natural when it grows from a relatable human reaction.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media landscape">
+                  <video src="videos/a5-title.mp4" controls width="1920" height="1080"></video>
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">05</div><div class="project-date">Assignment 5</div></div>
+                <div class="project-assignment">MOVIE / SHOW TITLE</div>
+                <h3 class="project-title">The Umbrella Academy Title Sequence</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A title sequence for The Umbrella Academy built around a rotating black-and-white spiral. Each character is introduced through the same hypnotic visual system, with multiply masking used to create an eerie, unstable atmosphere.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted to capture the strange and psychologically distorted tone of the show through repetition, motion, and visual ambiguity.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reverse">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media poster">
+                  <img src="images/a6-poster.jpg" alt="Assignment 6 poster">
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">06</div><div class="project-date">Assignment 6</div></div>
+                <div class="project-assignment">IDC</div>
+                <h3 class="project-title">Wave to Earth Lyrics Poster</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>An experimental lyric poster inspired by David Carson's typographic language. Layered text, rough textures, and fragmented image placement prioritize atmosphere over clean readability.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted the poster to feel like the song sounds: emotional, raw, and slightly disorienting. Meaning arrives through mood as much as through words.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media pagewide">
+                  <img src="images/a7-helmet.jpg" alt="Assignment 7 product page">
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">07</div><div class="project-date">Assignment 7</div></div>
+                <div class="project-assignment">F1 HELMET PRODUCT PAGE</div>
+                <h3 class="project-title">Ignition Blade X</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A conceptual Red Bull F1 helmet merged with other brand identities and presented through a polished product page layout. The design uses sharp metallic forms and flame-based graphics to suggest ignition, speed, and control.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted to combine product design, branding, and presentation into one believable concept that feels both speculative and market-ready.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reverse">
+            <div class="project-grid">
+              <div class="project-media-wrap">
+                <div class="media gif">
+                  <img src="gifs/a8-egg.gif" alt="Assignment 8 gif">
+                </div>
+              </div>
+              <div class="project-copy">
+                <div class="meta-row"><div class="project-num">08</div><div class="project-date">Assignment 8</div></div>
+                <div class="project-assignment">INSTRUCTIONAL VIDEO / BROCHURE</div>
+                <h3 class="project-title">How to Make a Perfect Sunny Side Up Egg</h3>
+                <div class="project-text-grid">
+                  <div class="text-block"><h4>Description</h4><p>A step-by-step brochure explaining how to cook a sunny side up egg, supported by soft illustrations, approachable typography, and a GIF that makes the process easier to understand through motion.</p></div>
+                  <div class="text-block"><h4>Intention</h4><p>I wanted to show that good design is also functional: clear, warm, and helpful. The GIF extends the brochure from static information into usable instruction.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
